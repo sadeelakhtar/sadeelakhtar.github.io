@@ -23,7 +23,17 @@
         <div class="container">
             <div class="row" style="background-color: lightgray;">
                 <div class="col-12">
-                    {{message}}
+                    <div class="container" >
+                        <ul>
+                            <!-- i dont know why it doesnt enter a new line after each line -->
+                            <li v-for="lesson in lessons">
+                                <span>Subject: {{ lesson.Subject }}</span>
+                                <span>Location: {{ lesson.Location }}</span>
+                                <span>Price: {{ lesson.Price }}</span>
+                                <span>Spaces: {{ lesson.Spaces }}</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
