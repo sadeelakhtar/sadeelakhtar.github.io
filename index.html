@@ -2,15 +2,51 @@
 
 <html lang="en">
 
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+
 <head>
     <meta charset="utf-8">
+
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <title>School Classes and Activities</title>
 
 </head>
 
 <body>
-    
+    <div id="app">
+        <div class="jumbotron bg-info text-white text-center" style="background-color: skyblue;">
+            <h1>After school classes and activities</h1>
+        </div>
+        <div class="container">
+            <div class="row" style="background-color: lightgray;">
+                <div class="col-12">
+                    {{message}}
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
+
+<script>
+    let app = new Vue({
+        el: '#app',
+        data() {
+            return {
+                message: "Hello Vue!",
+                lessons: [
+                    {
+                        Subject: "Math",
+                        Location: "London",
+                        Price: "£100",
+                        Spaces: 5
+                    },
+                ]
+            }
+        }
+    })
+</script>
