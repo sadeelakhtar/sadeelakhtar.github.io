@@ -32,7 +32,7 @@
                                 <li>Location: {{ lesson.Location }}</li>
                                 <li>Price: {{ lesson.Price }}</li>
                                 <li>Spaces: {{ lesson.Spaces }}</li>
-                                
+                                <button v-on:click="reduceCount(lesson.id)" type="button" class="btn btn-primary btn-sm">Add to cart</button>
                             </ul>
                         </div>
                     </div>
