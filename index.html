@@ -72,8 +72,7 @@
         },
         methods: {
             reduceCount: function (id) {
-                for (index in this.lessons) {
-                    let lesson = this.lessons[index]
+                for (lesson of this.lessons) {
                     if (lesson.id === id && lesson.Spaces > 0) {
                         lesson.Spaces -= 1
                     }
