@@ -1,9 +1,15 @@
-const express = require("express"); // Requires the Express module
-const http = require('http');
-// Calls the express function to start a new Express application
-const app = express();
-app.use(function (request, response) { // middleware
-    console.log("In comes a request to: " + request.url);
-    response.end("Hello, world!");
+var express = require("express");
+var http = require("http");
+var app = express();
+
+app.use(function (request, response, next) {
+    console.log("In comes a " + request.method + " to " + request.url);
+    next();
 });
-http.createServer(app).listen(3000); // start the server
+
+app.use(function (request, response) { // only run if authorised
+    response.end('Hello,world!');
+});
+
+http.createServer(app).listen(3000);
+console.log("app listens on port 3000");
