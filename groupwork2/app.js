@@ -17,9 +17,12 @@ app.get('/', function (request, response) {
 var publicPath = path.resolve(__dirname, 'public');
 app.use(express.static(publicPath));
 
-// Routes GET requests to /lessons to the request handler
+// Routes GET requests to /lessons and /users to the request handler
 app.get('/lessons', (req, res) => {
     res.json(lessons);
+});
+app.get('/users', (req, res) => {
+    res.json(users);
 });
 
 app.use(function(req,res) {
@@ -34,3 +37,5 @@ let lessons = [
     { ' t o p i c ': ' math ', ' l o c at i o n ': ' Oxford ', ' p r i c e ': 90 },
     { ' t o p i c ': ' math ', ' l o c at i o n ': ' B r i s t o l ', ' p r i c e ': 120 },
 ]
+
+let users = { 'email': 'user@email.com', 'password': 'mypassword' };
