@@ -2,8 +2,6 @@ const express = require("express");
 const http = require("http");
 const app = express();
 const path = require('path');
-const cors = require('cors');
-const mustache = require ('mustache');
 
 var publicPath = path.resolve(__dirname, 'public');
 app.use(express.static(publicPath));
