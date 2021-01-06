@@ -1,0 +1,69 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+
+    <title>School Classes and Activities</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <div class="jumbotron text-white text-center" style="background-color: rgb(25, 15, 54);">
+            <h1>After school classes and activities</h1>
+        </div>
+        <div class="container">
+            <div class="card mb-3" v-for="lesson in lessons" v-bind:style="styleObject">
+                <div class="row no-gutters">
+                    <div class="col-md-3">
+                        <img v-bind:src=lesson.image class="card-img" height="200px">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ lesson.topic }}</h5>
+                            <ul style="list-style-type: none; margin: 0; padding: 0;">
+                                <li>Location: {{ lesson.location }}</li>
+                                <li>Price: {{ lesson.price }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    Vue.config.devtools = true
+    let app = new Vue({
+        el: '#app',
+        data: {
+            lessons: [],
+            styleObject: {
+                boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
+            }
+        },
+        created: function () {
+            // Fetch request to server to get list of lessons
+            fetch("http://localhost:3000/lessons").then(
+                function (response) {
+                    response.json().then(
+                        function(json){
+                            app.lessons = json
+                        }
+                    )
+                }
+            )
+        }
+    })
+
+</script>
