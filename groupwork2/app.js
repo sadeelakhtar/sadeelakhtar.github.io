@@ -1,5 +1,6 @@
+// GITHUB: https://github.com/sadeelakhtar/sadeelakhtar.github.io/tree/main/groupwork2
+
 const express = require("express");
-const http = require("http");
 const app = express();
 const path = require('path');
 
@@ -15,23 +16,23 @@ app.get('/lessons', (req, res) => {
     res.json(lessons);
 });
 
-app.get('/users', (req, res) => {
-    res.json(users);
+app.get('/user', (req, res) => {
+    res.json(user);
 });
 
-app.use(function(req,res) {
+app.use(function (req, res) {
     res.status(404).send('Page not found');
 })
 
-http.createServer(app).listen(3000);
-
-console.log("app listens on port 3000");
+app.listen(3000, () => {
+    console.log("app listens on port 3000");
+});
 
 let lessons = [
-    {'topic':  'math', 'location': 'London', 'price': 100, 'image': './math.png' },
-    {'topic': 'math', 'location': 'Liverpool ', 'price': 80, 'image': './math.png' },
-    {'topic': 'math', 'location': 'Oxford', 'price': 90, 'image': './math.png' },
-    {'topic': 'math', 'location': 'Bristol', 'price': 120 , 'image': './math.png'},
+    { 'topic': 'math', 'location': 'London', 'price': 100, 'image': './math.png' },
+    { 'topic': 'math', 'location': 'Liverpool ', 'price': 80, 'image': './math.png' },
+    { 'topic': 'math', 'location': 'Oxford', 'price': 90, 'image': './math.png' },
+    { 'topic': 'math', 'location': 'Bristol', 'price': 120, 'image': './math.png' },
 ]
 
-let users = { 'email': 'user@email.com', 'password': 'mypassword' };
+let user = { 'email': 'user@email.com', 'password': 'mypassword' };
